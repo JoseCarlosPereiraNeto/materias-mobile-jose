@@ -36,32 +36,37 @@ class HomePage extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Container(
-                  decoration: BoxDecoration(
-                    color: Color.fromARGB(255, 34, 139, 34),
+                ElevatedButton(
+                  onPressed:
+                      () {}, // Alterado de null para habilitar a cor do botão
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color.fromARGB(255, 7, 31, 248),
+                    fixedSize: const Size(130, 130),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(15),
+                    ),
                   ),
-                  child: ElevatedButton(
-                    onPressed: null,
-                    child: Text(
-                      "Sair",
-                      style: TextStyle(
-                        color: Color.fromARGB(255, 150, 139, 3),
-                        fontSize: 60,
-                        fontWeight: FontWeight.w500,
-                      ),
+                  child: const Text(
+                    "Sair",
+                    style: TextStyle(
+                      color: Color.fromARGB(255, 1, 15, 143),
+                      fontSize: 30,
                     ),
                   ),
                 ),
-
                 ElevatedButton(
-                  onPressed: null,
-                  child: Text(
-                    "Entar",
-                    style: TextStyle(
-                      color: Color.fromARGB(255, 75, 31, 146),
-                      fontSize: 60,
-                      fontWeight: FontWeight.w500,
+                  onPressed:
+                      () {}, // Alterado de null para habilitar a cor do botão
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color(0xFFAFAE24),
+                    fixedSize: const Size(130, 130),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(15),
                     ),
+                  ),
+                  child: const Text(
+                    "Entrar",
+                    style: TextStyle(color: Color(0xFF031cF5), fontSize: 30),
                   ),
                 ),
               ],
