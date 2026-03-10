@@ -1,7 +1,31 @@
+import 'package:app_fluxolivre/src/widgets/button_widgets.dart';
 import 'package:flutter/material.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+
+int count =0;
+
+void increment(){
+  setState(() {
+    count ++;
+  });
+}
+
+void decrement(){
+  setState(() {
+    count --;
+  });
+}
+
+bool get estaVazio => count == 0;
+bool get estaCheio => count == 15;
 
   @override
   Widget build(BuildContext context) {
@@ -18,15 +42,16 @@ class HomePage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              "Acesso Liberado",
+              estaCheio ? "Acesso Bloqueado" : "Acesso Liberado",
+             
               style: TextStyle(
-                color: Color(0xFFFFFFFF),
+                color: estaCheio ? Color(0xFFFF0000) : Color(0xFFFFFFFF),
                 fontSize: 40,
                 fontWeight: FontWeight.w500,
               ),
             ),
             Text(
-              "0",
+             count.toString(),
               style: TextStyle(
                 color: Color(0xFFFFFFFF),
                 fontSize: 60,
@@ -36,39 +61,8 @@ class HomePage extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                ElevatedButton(
-                  onPressed:
-                      () {}, // Alterado de null para habilitar a cor do botão
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color.fromARGB(255, 7, 31, 248),
-                    fixedSize: const Size(130, 130),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                  ),
-                  child: const Text(
-                    "Sair",
-                    style: TextStyle(
-                      color: Color.fromARGB(255, 1, 15, 143),
-                      fontSize: 30,
-                    ),
-                  ),
-                ),
-                ElevatedButton(
-                  onPressed:
-                      () {}, // Alterado de null para habilitar a cor do botão
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color(0xFFAFAE24),
-                    fixedSize: const Size(130, 130),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                  ),
-                  child: const Text(
-                    "Entrar",
-                    style: TextStyle(color: Color(0xFF031cF5), fontSize: 30),
-                  ),
-                ),
+                ButtonWidget(texto: 'sair', onClik: estaVazio ? () {} : decrement,),
+                ButtonWidget(texto: 'Entrar', onClik: estaCheio ? () {} : increment, ),     
               ],
             ),
           ],
